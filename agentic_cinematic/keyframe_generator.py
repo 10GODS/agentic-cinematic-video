@@ -11,7 +11,7 @@ import os
 def load_sdxl(device="cuda", dtype=torch.float16):
     """Load the SDXL pipeline with quality optimizations."""
     pipe = StableDiffusionXLPipeline.from_pretrained(
-        "stabilityai/stable-diffusion-xl-base-1.0",
+        "RunDiffusion/Juggernaut-XL-v9",
         torch_dtype=dtype, variant="fp16", use_safetensors=True,
     ).to(device)
     pipe.enable_vae_slicing()
