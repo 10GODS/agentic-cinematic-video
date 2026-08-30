@@ -33,7 +33,7 @@ We built an **autonomous agentic system** that transforms a one-sentence story p
 
 Our system features two collaborating AI agents working autonomously:
 
-### 1. **Director Agent** (Local LLM - Qwen2.5-1.5B-Instruct)
+### 1. **Director Agent** (Google Gemini API (Gemini Enterprise))
 - **Role**: Creative director & cinematographer
 - **Function**: Breaks story premise into cinematic shots with specific:
   - Shot types (extreme wide, close-up, over-the-shoulder, etc.)
@@ -121,16 +121,16 @@ We integrate **Grafana Cloud** for production-grade observability:
 ```
 agentic-cinematic-video/
 +-- agentic_cinematic/           # Core agentic pipeline
-¦   +-- __init__.py
-¦   +-- config.py                # Settings & cloud/partner config
-¦   +-- director.py              # LLM-based scene planner (Director agent)
-¦   +-- critic.py                # CLIP-based quality critic (Critic agent)
-¦   +-- keyframe_generator.py    # SDXL with agentic retry
-¦   +-- video_generator.py       # SVD-XT with shot-type motion adaptation
-¦   +-- interpolator.py          # Self-healing optical flow interpolation
-¦   +-- upscaler.py              # Real-ESRGAN with T4 optimization
-¦   +-- assembler.py             # Final assembly with cinematic enhancements
-¦   +-- orchestrator.py          # Main pipeline with GCS & Grafana integration
+ï¿½   +-- __init__.py
+ï¿½   +-- config.py                # Settings & cloud/partner config
+ï¿½   +-- director.py              # LLM-based scene planner (Director agent)
+ï¿½   +-- critic.py                # CLIP-based quality critic (Critic agent)
+ï¿½   +-- keyframe_generator.py    # SDXL with agentic retry
+ï¿½   +-- video_generator.py       # SVD-XT with shot-type motion adaptation
+ï¿½   +-- interpolator.py          # Self-healing optical flow interpolation
+ï¿½   +-- upscaler.py              # Real-ESRGAN with T4 optimization
+ï¿½   +-- assembler.py             # Final assembly with cinematic enhancements
+ï¿½   +-- orchestrator.py          # Main pipeline with GCS & Grafana integration
 +-- monitoring.py                # Grafana metrics helper
 +-- run.py                       # Command-line entry point
 +-- requirements.txt             # Dependencies
@@ -153,17 +153,22 @@ cd agentic-cinematic-video
 pip install -r requirements.txt
 ```
 
-### 3. Run with Default Premise (Saturn Astronaut)
+### 3. Set Gemini API Key
+   ``bash
+   set GEMINI_API_KEY="your-api-key-here"
+   ``
+
+4. Run with Default Premise (Saturn Astronaut)
 ```bash
 python run.py
 ```
 
-### 4. Run with Custom Premise
+### 5. Run with Custom Premise
 ```bash
 python run.py --premise "Your story premise here" --scenes 6
 ```
 
-### 5. For Hackathon Submission (Configure Cloud/Partner)
+### 6. For Hackathon Submission (Configure Cloud/Partner)
 ```bash
 # Set environment variables for Google Cloud
 export GCS_BUCKET_NAME="your-hackathon-bucket"
@@ -234,7 +239,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## ?? Acknowledgments
 
 - Built for the [Google Cloud Summer Blockbuster Hackathon](https://summerblockbuster.devpost.com/)
-- Leverages state-of-the-art open models: Qwen, SDXL, SVD-XT, Real-ESRGAN, CLIP
+- Leverages state-of-the-art open models: Gemini 2.0 Flash, SDXL, SVD-XT, Real-ESRGAN, CLIP
 - Inspired by the future of agentic AI in media and entertainment
 
 ---
@@ -245,3 +250,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ?? See your vision come alive in agentic_cinematic_output/
 
 *"Lights. Camera. Agents."* ????
+
