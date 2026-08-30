@@ -4,6 +4,12 @@ Reduces tile artifacts while maintaining quality for cinematic output.
 """
 
 import torch
+import sys
+import torchvision.transforms.functional as TF
+
+# Fix for basicsr crash with newer versions of torchvision in Kaggle/Colab
+sys.modules['torchvision.transforms.functional_tensor'] = TF
+
 from basicsr.archs.rrdbnet_arch import RRDBNet
 from realesrgan import RealESRGANer
 import cv2
