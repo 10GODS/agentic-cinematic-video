@@ -8,7 +8,7 @@ import os
 
 # Google Gemini API Configuration (Director Agent - Gemini Enterprise)
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
-GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.0-flash")
+GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.6-flash")
 
 # Google Cloud Configuration
 GCS_BUCKET_NAME = os.environ.get("GCS_BUCKET_NAME", "agentic-cinematic-hackathon")

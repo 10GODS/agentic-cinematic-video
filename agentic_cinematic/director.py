@@ -35,16 +35,17 @@ def load_planner(device=None, dtype=None):
     
     genai.configure(api_key=api_key)
     
-    # Use Gemini 2.0 Flash for fast, cost-effective scene planning
+    # Use Gemini 3.6 Flash for fast, cost-effective scene planning
+    model_name = os.environ.get("GEMINI_MODEL", "gemini-3.6-flash")
     model = genai.GenerativeModel(
-        "gemini-2.0-flash",
+        model_name,
         generation_config=genai.GenerationConfig(
             temperature=0.7,
             max_output_tokens=2048,
             response_mime_type="application/json",
         ),
     )
-    print("[director agent] Gemini 2.0 Flash loaded for scene planning.")
+    print(f"[director agent] {model_name} loaded for scene planning.")
     return None, model  # tokenizer=None, model=GenerativeModel
 
 
