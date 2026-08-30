@@ -34,3 +34,4 @@ requests>=2.31.0
 
 # For notebook execution (if used)
 IPython>=8.0.0
+scipy

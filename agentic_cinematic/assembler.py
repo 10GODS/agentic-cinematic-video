@@ -72,7 +72,7 @@ def frames_to_mp4(frames_pil, fps, out_path, config=None):
     clip.close()
     return out_path
 
-def assemble_final_video(scene_clip_paths, final_path, crossfade, config=None):
+def assemble_final_video(scene_clip_paths, final_path, crossfade, config=None, audio_path=None):
     """Assemble final video with crossfades between scenes and optional enhancements."""
     clips = [VideoFileClip(p) for p in scene_clip_paths]
     
@@ -101,15 +101,28 @@ def assemble_final_video(scene_clip_paths, final_path, crossfade, config=None):
         faded_clips.append(clip.crossfadein(duration))
     
     final = concatenate_videoclips(faded_clips, method="compose", padding=-crossfade)
+    
+    # Attach audio if provided
+    if audio_path and os.path.exists(audio_path):
+        from moviepy.editor import AudioFileClip
+        audio_clip = AudioFileClip(audio_path)
+        # Loop or trim audio to match video duration exactly
+        if audio_clip.duration > final.duration:
+            audio_clip = audio_clip.subclip(0, final.duration)
+        final = final.set_audio(audio_clip)
+        
     final.write_videofile(
         final_path, 
         codec="libx264", 
-        audio=False, 
+        audio_codec="aac" if audio_path else None,
+        audio=True if audio_path else False, 
         logger=None,
         preset="medium",
         ffmpeg_params=["-crf", "18"]
     )
     final.close()
+    if audio_path and 'audio_clip' in locals():
+        audio_clip.close()
     for c in clips:
         c.close()
     return final_path

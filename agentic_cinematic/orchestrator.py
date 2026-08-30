@@ -242,10 +242,30 @@ def run_pipeline(config=None, gcs_client=None, grafana_config=None):
     free_mem()
     send_grafana_metric("upscaling_duration", stage_time, {"stage": "upscaling"}, grafana_config)
 
+    print("\n=== Stage 4.5: Audio Generation (MusicGen) ===")
+    stage_start = time.time()
+    audio_path = f"{OUTPUT_DIR}/soundtrack.wav"
+    try:
+        from .audio_generator import load_audio_model, generate_soundtrack
+        audio_processor, audio_model = load_audio_model()
+        if audio_model is not None:
+            # Estimate video duration (approx 3 seconds per scene)
+            estimated_duration = len(scenes) * 3.0
+            generate_soundtrack(config["premise"], estimated_duration, audio_processor, audio_model, audio_path)
+            del audio_model
+            free_mem()
+        else:
+            audio_path = None
+    except ImportError:
+        print("  [Audio Agent] transformers/scipy not found, skipping audio.")
+        audio_path = None
+    stage_time = time.time() - stage_start
+    send_grafana_metric("audio_generation_duration", stage_time, {"stage": "audio"}, grafana_config)
+
     print("\n=== Stage 5: Final assembly ===")
     stage_start = time.time()
     final_path = f"{OUTPUT_DIR}/final_cinematic_video.mp4"
-    assemble_final_video(final_clip_paths, final_path, config["crossfade_seconds"], config)
+    assemble_final_video(final_clip_paths, final_path, config["crossfade_seconds"], config, audio_path=audio_path)
     stage_time = time.time() - stage_start
     
     # Upload final video to GCS (primary asset for M&E workflow)
