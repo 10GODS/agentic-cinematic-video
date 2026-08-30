@@ -1,4 +1,4 @@
-# ?? Agentic Cinematic Video Generation
+#  Agentic Cinematic Video Generation
 ## Summer Blockbuster Hackathon Submission
 ### Solving Automated Concept Visualization for Film Pre-Production
 
@@ -9,18 +9,18 @@
 
 > **"Transforming film pre-production from weeks of manual work to minutes of agentic AI collaboration"**
 
-## ?? The Problem: Film Pre-Production Bottleneck
+## The Problem: Film Pre-Production Bottleneck
 
 Hollywood spends **$2B+ annually** on pre-production visualization including concept art, storyboards, and pre-visualization (pre-vis). This process involves:
 - Weeks of manual iteration between directors, cinematographers, and VFX artists
 - Costly miscommunications leading to expensive reshoots
 - Limited ability to explore creative alternatives due to time/budget constraints
 
-## ?? Our Agentic Solution
+## Our Agentic Solution
 
 We built an **autonomous agentic system** that transforms a one-sentence story premise into cinematic reference videos, replacing expensive traditional pre-vis workflows.
 
-### ?? Hackathon Requirements Met
+###  Hackathon Requirements Met
 | Requirement | How We Satisfy It |
 |-------------|-------------------|
 | **Actual Google Cloud Use** | ? Google Cloud Storage for media asset management (keyframes, clips, final videos) |
@@ -29,7 +29,7 @@ We built an **autonomous agentic system** that transforms a one-sentence story p
 | **Public GitHub Repo** | ? This repository with MIT license |
 | **3-Minute Demo Video** | ? Shows agent functioning as built (see DEMO_SCRIPT.md) |
 
-## ?? Agentic Architecture
+## Agentic Architecture
 
 Our system features two collaborating AI agents working autonomously:
 
@@ -50,20 +50,20 @@ Our system features two collaborating AI agents working autonomously:
   - Provides iterative feedback for visual refinement
 - **Output**: Quality scores and agentic retry decisions
 
-### ?? Agentic Collaboration
+### Agentic Collaboration
 ```
 Story Premise 
-    ? Director Agent: Plans shots & writes prompts
-    ? Critic Agent: Scores keyframes & requests retries
-    ? Director Agent: Refines prompts based on feedback
-    ? (Repeat until quality threshold met)
-    ? SVD-XT: Generates video clips
-    ? Interpolation: Smooths motion to 24fps cinematic
-    ? Real-ESRGAN: Upscales to cinematic resolution
-    ? Assembler: Creates final video with crossfades
+     Director Agent: Plans shots & writes prompts
+     Critic Agent: Scores keyframes & requests retries
+     Director Agent: Refines prompts based on feedback
+     (Repeat until quality threshold met)
+     SVD-XT: Generates video clips
+     Interpolation: Smooths motion to 24fps cinematic
+     Real-ESRGAN: Upscales to cinematic resolution
+     Assembler: Creates final video with crossfades
 ```
 
-## ?? Google Cloud Integration (Actual Use)
+##  Google Cloud Integration (Actual Use)
 
 We integrate **Google Cloud Storage** for professional media asset management:
 
@@ -79,7 +79,7 @@ We integrate **Google Cloud Storage** for professional media asset management:
 - Enables asynchronous review and feedback
 - Provides backup and disaster recovery
 
-## ?? Grafana Labs Integration (Partner Tech Use)
+##  Grafana Labs Integration (Partner Tech Use)
 
 We integrate **Grafana Cloud** for production-grade observability:
 
@@ -102,7 +102,7 @@ We integrate **Grafana Cloud** for production-grade observability:
 - **Optimization**: Data-driven improvements to creative process
 - **Transparency**: Provides visibility into autonomous agent decisions
 
-## ?? Key Features for Film Pre-Production
+##  Key Features for Film Pre-Production
 
 ### Cinematic Quality Enhancements:
 - **Film LUT Color Grading**: Teal-and-orange cinematic look
@@ -117,7 +117,7 @@ We integrate **Grafana Cloud** for production-grade observability:
 - **Memory Management**: Aggressive GPU cleanup between stages for T4 compatibility
 - **Deterministic Fallback**: Template-based planning if LLM output unparseable
 
-## ?? Project Structure
+##  Project Structure
 ```
 agentic-cinematic-video/
 +-- agentic_cinematic/           # Core agentic pipeline
@@ -140,7 +140,7 @@ agentic-cinematic-video/
 +-- .gitignore                   # Git ignore rules
 ```
 
-## ?? Getting Started
+##  Getting Started
 
 ### 1. Clone the Repository
 ```bash
@@ -184,7 +184,7 @@ export GRAFANA_URL="https://metrics.grafana.com/api/prometheus/push"  # Default
 python run.py
 ```
 
-## ?? Creating Your 3-Minute Demo Video
+## Creating Your 3-Minute Demo Video
 
 See [DEMO_SCRIPT.md](DEMO_SCRIPT.md) for a complete script showing:
 - Problem statement visualization
@@ -194,7 +194,7 @@ See [DEMO_SCRIPT.md](DEMO_SCRIPT.md) for a complete script showing:
 - Final cinematic output with film LUT applied
 - Clear call-to-action for judges
 
-## ?? Submission Checklist
+## Submission Checklist
 
 For your Devpost submission, ensure you have:
 
@@ -207,36 +207,36 @@ For your Devpost submission, ensure you have:
 4. [ ] **Hosted Project URL** (can be GitHub Pages or similar)
 5. [ ] **Completed Devpost Form**
 
-## ?? Why This Wins the Hackathon
+##  Why This Wins the Hackathon
 
 ### Technical Excellence:
-- ? **Actual GCP Use**: Not just namedropping - real Storage API calls for media asset management
-- ? **Partner Technology**: Real Grafana Labs integration with meaningful metrics
-- ? **T4 Compatible**: Core generation runs on free Kaggle T4 GPU
-- ? **Production Ready**: Observability, error handling, and logging
-- ? **Open Source**: MIT license allows commercial use
+-  **Actual GCP Use**: Not just namedropping - real Storage API calls for media asset management
+-  **Partner Technology**: Real Grafana Labs integration with meaningful metrics
+-  **T4 Compatible**: Core generation runs on free Kaggle T4 GPU
+-  **Production Ready**: Observability, error handling, and logging
+-  **Open Source**: MIT license allows commercial use
 
 ### M&E Impact:
-- ? **Solves Real Problem**: Addresses $2B+ pre-production bottleneck
-- ? **Clear Workflow**: Maps directly to film industry roles (Director, Critic/VFX supervisor)
-- ? **Business Value**: Shows time/cost savings potential
-- ? **Innovation**: First agentic system for cinematic pre-vis
+-  **Solves Real Problem**: Addresses $2B+ pre-production bottleneck
+-  **Clear Workflow**: Maps directly to film industry roles (Director, Critic/VFX supervisor)
+-  **Business Value**: Shows time/cost savings potential
+-  **Innovation**: First agentic system for cinematic pre-vis
 
 ### Demo Quality:
-- ? **Visual Appeal**: Cinematic enhancements make output professionally compelling
-- ? **Technical Depth**: Shows sophisticated agentic collaboration
-- ? **Cloud Narrative**: Clear story of GCP and partner integration
-- ? **Judging Criteria Alignment**: 
+-  **Visual Appeal**: Cinematic enhancements make output professionally compelling
+-  **Technical Depth**: Shows sophisticated agentic collaboration
+-  **Cloud Narrative**: Clear story of GCP and partner integration
+-  **Judging Criteria Alignment**: 
   - Technological Implementation (GCP + Grafana + agentic AI)
   - Design (Complete product experience, not just PoC)
   - Potential Impact (Solves real M&E problem)
   - Quality of Idea (Creative, non-obvious use of tech)
 
-## ?? License
+##  License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## ?? Acknowledgments
+##  Acknowledgments
 
 - Built for the [Google Cloud Summer Blockbuster Hackathon](https://summerblockbuster.devpost.com/)
 - Leverages state-of-the-art open models: Gemini 2.0 Flash, SDXL, SVD-XT, Real-ESRGAN, CLIP
@@ -245,9 +245,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 **Ready to transform your story premise into cinematic pre-vis?**  
-?? Edit the premise in `run.py` or pass it via `--premise`  
-?? Run `python run.py` and watch the agents collaborate  
-?? See your vision come alive in agentic_cinematic_output/
+Edit the premise in `run.py` or pass it via `--premise`  
+Run `python run.py` and watch the agents collaborate  
+See your vision come alive in agentic_cinematic_output/
 
 *"Lights. Camera. Agents."* ????
 
