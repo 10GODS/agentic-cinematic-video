@@ -17,7 +17,7 @@ def load_critic(device="cuda", dtype=torch.float16):
 @torch.no_grad()
 def clip_score(image: Image.Image, text: str, clip_model, clip_processor, device="cuda") -> float:
     """Score an image against a text prompt using CLIP for agentic feedback."""
-    inputs = clip_processor(text=[text], images=image, return_tensors="pt", padding=True).to(device)
+    inputs = clip_processor(text=[text], images=image, return_tensors="pt", padding=True, truncation=True, max_length=77).to(device)
     outputs = clip_model(**inputs)
     img_e = outputs.image_embeds / outputs.image_embeds.norm(dim=-1, keepdim=True)
     txt_e = outputs.text_embeds / outputs.text_embeds.norm(dim=-1, keepdim=True)
